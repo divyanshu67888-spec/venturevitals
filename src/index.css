@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 5%; /* #0d0d0d */
+    --foreground: 210 20% 95%;
+
+    --card: 0 0% 7%; /* #111111 */
+    --card-foreground: 210 20% 95%;
+
+    --popover: 0 0% 7%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 0 0% 98%; /* White accent */
+    --primary-foreground: 0 0% 9%;
+
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 210 15% 78%;
+
+    --muted: 0 0% 12%;
+    --muted-foreground: 215 10% 48%;
+
+    --accent: 0 0% 15%; /* Dark gray accent */
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 0 0% 98%;
+
+    --radius: 0.625rem;
+
+    --sidebar-background: 0 0% 7%;
+    --sidebar-foreground: 210 20% 95%;
+    --sidebar-primary: 0 0% 98%;
+    --sidebar-primary-foreground: 0 0% 9%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 210 20% 95%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 0 0% 98%;
+
+    --success: 152 55% 42%;
+    --success-foreground: 0 0% 5%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  ::selection {
+    background: hsl(0 0% 98% / 0.2);
+  }
+}
+
+@layer utilities {
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .font-serif {
+    font-family: 'Instrument Serif', Georgia, serif;
+  }
+
+  /* Input focus glow */
+  input:focus,
+  textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 1px hsl(0 0% 98% / 0.6), 0 0 16px hsl(0 0% 98% / 0.15);
+    transition: box-shadow 0.25s ease;
+  }
+
+  /* Placeholder fade on focus */
+  input:focus::placeholder,
+  textarea:focus::placeholder {
+    opacity: 0.4;
+    transition: opacity 0.25s ease;
+  }
+}

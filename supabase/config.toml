@@ -1,0 +1,25 @@
+project_id = "acgopegeqmryonyrkdmi"
+
+[functions.war-room]
+verify_jwt = false
+
+[functions.budget-advisor]
+verify_jwt = false
+
+[functions.elevenlabs-tts]
+verify_jwt = false
+
+[functions.elevenlabs-scribe-token]
+verify_jwt = false
+
+[functions.embed-document]
+verify_jwt = false
+
+[functions.rag-search]
+verify_jwt = false
+
+[functions.mvp-roadmap]
+verify_jwt = false
+
+[functions.business-suggester]
+verify_jwt = false
