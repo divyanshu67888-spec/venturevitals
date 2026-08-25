@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Wallet, Loader2, ArrowRight, MapPin, Sparkles, Heart } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase, SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 import type { BusinessSuggesterResult } from "./business-suggester/types";
 import SuggestionCard from "./business-suggester/SuggestionCard";
@@ -45,13 +45,13 @@ const BusinessSuggester = () => {
 
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/business-suggester`,
+        `${SUPABASE_URL}/functions/v1/business-suggester`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
-            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+            apikey: SUPABASE_PUBLISHABLE_KEY,
+            Authorization: `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
           },
           body: JSON.stringify({ 
             budget: finalBudget, 

@@ -10,7 +10,7 @@ import HistoryPanel from "@/components/HistoryPanel";
 import FAQ from "@/components/FAQ";
 import { useAnalysisHistory, HistoryEntry } from "@/hooks/useAnalysisHistory";
 import { motion } from "framer-motion";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase, SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 
 const Index = () => {
@@ -27,13 +27,13 @@ const Index = () => {
 
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/war-room`,
+        `${SUPABASE_URL}/functions/v1/war-room`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
-            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+            apikey: SUPABASE_PUBLISHABLE_KEY,
+            Authorization: `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
           },
           body: JSON.stringify({ idea, mode }),
         }

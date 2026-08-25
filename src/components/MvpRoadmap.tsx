@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Route, Loader2, ArrowRight, Target, AlertTriangle, CheckSquare, Layers, Building2, MapPin, CalendarDays, Rocket, CheckCircle2 } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase, SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 import type { MVPRoadmap } from "./roadmap/types";
 import { RoadmapPhaseCard } from "./roadmap/RoadmapPhaseCard";
@@ -26,13 +26,13 @@ const MvpRoadmap = () => {
 
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/mvp-roadmap`,
+        `${SUPABASE_URL}/functions/v1/mvp-roadmap`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
-            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+            apikey: SUPABASE_PUBLISHABLE_KEY,
+            Authorization: `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
           },
           body: JSON.stringify({ businessIdea: businessIdea.trim(), timeline }),
         }

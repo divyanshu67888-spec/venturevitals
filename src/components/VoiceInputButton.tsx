@@ -1,7 +1,7 @@
 import { useState, useCallback } from "react";
 import { Mic, MicOff, Loader2 } from "lucide-react";
 import { useScribe, CommitStrategy } from "@elevenlabs/react";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase, SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 
 interface VoiceInputButtonProps {
@@ -31,13 +31,13 @@ const VoiceInputButton = ({ onTranscript, disabled }: VoiceInputButtonProps) => 
     setIsConnecting(true);
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/elevenlabs-scribe-token`,
+        `${SUPABASE_URL}/functions/v1/elevenlabs-scribe-token`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
-            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+            apikey: SUPABASE_PUBLISHABLE_KEY,
+            Authorization: `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
           },
           body: JSON.stringify({}),
         }

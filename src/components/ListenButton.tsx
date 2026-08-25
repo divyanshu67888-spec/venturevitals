@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback } from "react";
 import { Volume2, Loader2, Square } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase, SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "@/integrations/supabase/client";
 import { toast } from "@/hooks/use-toast";
 
 interface ListenButtonProps {
@@ -26,13 +26,13 @@ const ListenButton = ({ text, label = "Listen" }: ListenButtonProps) => {
       // First, check if the function exists and the key is valid by calling a smoke test
       // Since it's a binary response, we'll use regular fetch with error parsing
       const response = await fetch(
-        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/elevenlabs-tts`,
+        `${SUPABASE_URL}/functions/v1/elevenlabs-tts`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
-            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+            apikey: SUPABASE_PUBLISHABLE_KEY,
+            Authorization: `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
           },
           body: JSON.stringify({ text }),
         }
